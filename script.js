@@ -45,7 +45,7 @@ document.getElementById("new-quote-span").addEventListener("click", function( ev
     getRandomQuote();
   }, false);
   // 2.2 change background color/color
-  function getRandomQuote() {
+  var getRandomQuote = function() {
     // 2. Get random number and generate new quote based upon that
     var randomNumber = Math.floor(Math.random() * Quotes.length);
     // randomNumber(Quotes.length);
@@ -60,13 +60,20 @@ document.getElementById("new-quote-span").addEventListener("click", function( ev
     var g = Math.ceil(Math.random() * 255);
     console.log(g);
     var b = Math.ceil(Math.random() * 255);
-    console.log(document.querySelectorAll('blockquote .fa'));
-    // How to set the body's background color and an element's color http://stackoverflow.com/questions/197748/how-do-i-change-the-background-color-with-javascript Stack Overflow MIT License
-    document.body.style.background = "rgb(" + r + ", " + g + ", " + b + ")";
-    document.querySelector('a').style.background = "rgb(" + r + ", " + g + ", " + b + ")";
-    document.querySelector(".new-quote-link").style.background = "rgb(" + r + ", " + g + ", " + b + ")";
-    document.querySelector('.fa').style.color = "rgb(" + r + ", " + g + ", " + b + ")";
-    document.querySelector('.quote-paragraph').style.color = "rgb(" + r + ", " + g + ", " + b + ")";
-    document.querySelector('.span-div span').style.color = "rgb(" + r + ", " + g + ", " + b + ")";
-    document.querySelector('footer a').style.background = "rgb(" + r + ", " + g + ", " + b + ")";
-  }
+
+    var randomBackground = document.querySelectorAll("body, footer a, .new-quote-link");
+
+    console.log(randomBackground);
+
+    for (var i = 0; i < randomBackground.length; i++) {
+      randomBackground[i].style.background = "rgb(" + r + ", " + g + ", " + b + ")";
+    }
+
+    var randomColor = document.querySelectorAll(".fa, .quote-text, .author");
+
+    console.log(randomColor);
+
+    for (var i = 0; i < randomColor.length; i++) {
+      randomColor[i].style.color = "rgb(" + r + ", " + g + ", " + b + ")";
+    }
+  };
